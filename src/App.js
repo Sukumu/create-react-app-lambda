@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import logo from "./logo.svg"
 import "./App.css"
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
 class LambdaDemo extends Component {
   constructor(props) {
     super(props)
@@ -43,6 +43,27 @@ class App extends Component {
           <LambdaDemo />
         </header>
       </div>
+      
+      	$.getJSON('https://api.unsplash.com/users/sukumu/photos/?client_id=W8vWI-gJMLM96O4Eg_wST1Uf63Wry9BUG9Abwfcp1_I', function(data) {
+  console.log(data);
+  
+  $.each(data, function(index, value) {
+    console.log(value);
+    
+     var name = value.user.name;
+     var bio = value.user.bio;
+     var imageURL = value.urls.regular;
+    
+//$('.name').text(name);
+//$('.bio').text(bio);
+//$('.image img').attr('src', imageURL);
+    
+    $('.output').append('<h1 class="name">' + name + '</h1><h2 class="bio">' + bio + '</h2><div class="image"><img src="' + imageURL + '"/></div>');
+      });
+});
+      
+      
+      
     )
   }
 }
